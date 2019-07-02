@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div v-show="$store.state.showNav" class="header">
     <div class="logo">
       <i class="back"/>
     </div>

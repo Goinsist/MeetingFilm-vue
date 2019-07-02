@@ -1,19 +1,24 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import store from '@/store'
+
 const Recommend = () => import('views/Recommend')
 const Category = () => import('views/Category')
 const Rank = () => import('views/Rank')
 const Search = () => import('views/Search')
 const User = () => import('views/User')
-const Movie = () => import('views/Movie')
+
 const Login = () => import('views/Login')
 const List = () => import('views/List')
 const ErrorPage = () => import('views/Error')
+const CinemaDetail = () => import('views/CinemaDetail')
+const MovieDetail = () => import('views/MovieDetail')
+const HallSeat = () => import('views/hallseat/HallSeat')
+const ConfirmOrder = () => import('views/ConfirmOrder')
+const MyOrder = () => import('views/MyOrder')
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -44,19 +49,34 @@ export default new Router({
     {
       path: '/user',
       name: 'user',
-      component: User,
-      beforeEnter: (to, from, next) => {
-        if (!store.state.user) {
-          next('/login')
-          return
-        }
-        next()
-      }
+      component: User
+
     },
     {
       path: '/movie/:id',
       name: 'movie',
-      component: Movie
+      component: MovieDetail
+    },
+    {
+      path: '/cinemadetail/:cinemaId', // 单个影片详情
+      name: 'cinemadetail',
+      component: CinemaDetail
+    },
+    {
+      path: '/selectseat',
+      name: 'hallSeat',
+      component: HallSeat
+    },
+    {
+      path: '/confirmorder',
+      name: 'confirmOrder',
+      component: ConfirmOrder
+    },
+    {
+      path: '/myorder',
+      name: 'myOrder',
+      component: MyOrder
+
     },
     {
       path: '/login',
@@ -75,3 +95,20 @@ export default new Router({
     }
   ]
 })
+
+// 导航守卫
+// 使用 router.beforeEach 注册一个全局前置守卫，判断用户是否登陆
+router.beforeEach((to, from, next) => {
+  if (to.path === '/login' || to.path === '/recommend' || to.path === '/list' || to.path === '/' || to.path === '/category' || to.path === '/rank' || to.path === '/search' || to.path === '/error') {
+    next()
+  } else {
+    let token = localStorage.getItem('Authorization')
+
+    if (token === 'null' || token === '') {
+      next('/login')
+    } else {
+      next()
+    }
+  }
+})
+export default router

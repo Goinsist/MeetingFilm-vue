@@ -1,19 +1,20 @@
 <template>
-  <div class="card" :class="{ 'rank-card': isRank }" @click="$emit('select', movie._id)">
+  <div class="card" :class="{ 'rank-card': isRank }" @click="$emit('select', movie.filmId)">
     <p v-if="isRank" class="text" :class="'rank-' + sort">{{ sort }}</p>
     <div class="image">
-      <img v-lazy="movie.poster" width="100%" height="100%">
+      <img v-lazy="movie.imgAddress" width="100%" height="100%">
     </div>
     <div class="descript">
-      <h1 class="title">{{ movie.title }}</h1>
-      <p v-if="movie.isPlay === 1" class="rate">
-        观众评:
-        <span :class="{ 'text': movie.rate > 0 }">{{ movie.rate || '暂无' }}</span>
+      <h1 class="title">{{ movie.filmName }}</h1>
+      <p v-if="movie.filmStatus !==2" class="rate">
+        观众评分:
+        <span :class="{ 'text': movie.filmScore > 0 }">{{ movie.filmScore || '暂无' }}</span>
       </p>
-      <p v-else class="pubdate">上映时间: {{ movie.pubdate | removeZh }}</p>
-      <p class="cast">主演: {{ casts }}</p>
-      <p class="duration">时长: {{ movie.duration || '未知' }}</p>
+      <p v-else class="pubdate">上映时间: {{ movie.showTime | removeZh }}</p>
+      <p class="cast">导演: {{ movie.directorName }}</p>
     </div>
+    <mt-button v-if="movie.filmStatus===1" size="small" type="danger">购票</mt-button>
+    <mt-button v-if="movie.filmStatus===2" size="small" type="primary">预售</mt-button>
   </div>
 </template>
 
@@ -29,6 +30,7 @@ export default {
       type: Object,
       required: true
     },
+
     sort: {
       type: Number,
       default: -1

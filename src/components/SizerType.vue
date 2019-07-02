@@ -24,14 +24,16 @@ export default {
   data () {
     return {
       types: [
-        { name: '全部', type: '' },
-        { name: '已上映', type: 1 },
-        { name: '未上映', type: 0 }
+
+        { name: '正在热映', type: 1 },
+        { name: '即将上映', type: 2 },
+        { name: '经典电影', type: 3 }
       ]
     }
   },
   methods: {
     selectItem (item) {
+      console.log(item)
       this.$emit('change', item)
     }
   }

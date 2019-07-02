@@ -13,16 +13,27 @@
       </div>
       <div class="menu-wrapper">
         <ul class="menus">
-          <li class="menu-item">
-            <i class="iconfont icon-user1"/>
-            <span class="text">我的资料</span>
+          <li class="menu-item" @click="listOrders">
+            <van-icon
+              name="orders-o"
+              :info="counts"
+            />
+            <span class="text" style="padding-left: 10px">我的订单</span>
             <i class="iconfont icon-right"/>
           </li>
           <li class="menu-item">
-            <i class="iconfont icon-collect"/>
-            <span class="text">我的收藏</span>
+            <van-icon
+              name="point-gift-o"
+            />
+            <span class="text" style="padding-left: 10px">优惠券</span>
             <i class="iconfont icon-right"/>
-            <span v-if="collectMovies.length" class="text count">{{ collectMovies.length }}</span>
+          </li>
+          <li class="menu-item">
+            <van-icon
+              name="coupon-o"
+            />
+            <span class="text" style="padding-left: 10px">折扣卡</span>
+            <i class="iconfont icon-right"/>
           </li>
         </ul>
       </div>
@@ -34,39 +45,47 @@
 </template>
 
 <script>
-import Cookie from 'js-cookie'
-import { mapState } from 'vuex'
 
-const COOKIE_NAME = 'movie_trailer_user'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'User',
   data () {
     return {
-      collectMovies: []
+      collectMovies: [],
+      user: {},
+      counts: 0
     }
   },
-  computed: {
-    ...mapState([
-      'user'
-    ])
-  },
+
   created () {
     this.getUserInfo()
+    this.getOrderCounts()
   },
   methods: {
+    ...mapMutations(['changeLogin']),
+    getOrderCounts () {
+      this.$axios.post('/meetingFilm/order/getOrderInfo').then(res => {
+        if (res.status === 0) {
+          console.log(res)
+          this.counts = res.totalPage
+        }
+      })
+    },
+    listOrders () {
+      this.$router.push('/myorder')
+    },
     getUserInfo () {
-      this.$axios.get('/api/user/get_collects').then(res => {
-        if (res.code === 1001) {
-          this.collectMovies = res.result.movies
+      this.$axios.get('/meetingFilm/user/getUserInfo').then(res => {
+        if (res.status === 0) {
+          this.user = res.data
         }
       })
     },
     logout () {
-      this.$axios.post('/api/user/logout').then(res => {
-        if (res.code === 1001) {
-          Cookie.remove(COOKIE_NAME)
-          this.$store.commit('setUserInfo', null)
+      this.$axios.get('/meetingFilm/user/logout').then(res => {
+        if (res.status === 0) {
+          this.changeLogin({ Authorization: '' })
           this.$router.push('/')
         }
       })

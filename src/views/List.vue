@@ -2,17 +2,7 @@
   <Transition name="fade">
     <div class="list">
       <TheBackHeader>
-        <div class="tabs">
-          <div
-            v-for="(name, index) in tabs"
-            :key="name"
-            :class="{ 'active': activeIdx === index }"
-            class="item"
-            @click="switchTab(index)"
-          >
-            <span>{{ name }}</span>
-          </div>
-        </div>
+        <span>{{ tabName }}</span>
       </TheBackHeader>
       <div class="content-wrapper">
         <ScrollView :data="movieList" :pull-up-load="true" @pulling-up="loadMore">
@@ -46,6 +36,7 @@ export default {
   data () {
     return {
       movieList: [],
+      tabName: '',
       count: 0,
       page: 1,
       tabs: ['即将上映', '正在热映'],
@@ -53,12 +44,32 @@ export default {
       pullUpLoading: false
     }
   },
+
   computed: {
     noMore () {
       return this.count === this.movieList.length && this.count !== 0
     }
   },
+  watch: {
+
+    '$route' (to, from) {
+      this.$router.go(0)
+    }
+  },
+
   created () {
+    let id = Number(this.$route.params.type)
+    switch (id) {
+      case 1:
+        this.tabName = '正在热映'
+        break
+      case 2:
+        this.tabName = '即将上映'
+        break
+      case 3:
+        this.tabName = '经典电影'
+        break
+    }
     this.getMovieList()
   },
   beforeRouteUpdate  (to, from, next) {
@@ -71,15 +82,16 @@ export default {
   },
   methods: {
     getMovieList () {
+      console.log(this.$route.params)
       const params = {
-        page: this.page,
-        page_size: 10,
-        type: this.$route.params.type
+        nowPage: this.page,
+        pageSize: 10,
+        showType: Number(this.$route.params.type)
       }
-      this.$axios.get('/api/movie/get_movies', { params }).then(res => {
-        if (res.code === 1001) {
-          this.movieList = this.movieList.concat(res.result.movies)
-          this.count = res.result.count
+      this.$axios.get('/meetingFilm/film/getFilms', { params }).then(res => {
+        if (res.status === 0) {
+          this.movieList = this.movieList.concat(res.data)
+          this.count = res.totalPage
         }
         this.$nextTick(() => {
           this.pullUpLoading = false
@@ -113,14 +125,7 @@ export default {
   left 0
   background #fff
   z-index 10
-  .tabs
-    width 210px
-    height 30px
-    line-height 30px
-    font-size 0
-    border 1px solid #0d121a
-    border-radius 100px
-    background #0d121a
+
     .item
       display inline-block
       width 50%

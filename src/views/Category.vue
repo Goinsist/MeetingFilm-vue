@@ -17,8 +17,8 @@
         <SizerCategory
           v-show="activeTabIdx === 0"
           ref="sizerCategory"
-          v-model="params.categories"
-          @change="getMovies"
+          v-model="params.category"
+          @change="changeParam"
         />
         <SizerType
           v-show="activeTabIdx === 1"
@@ -28,20 +28,25 @@
         <SizerRate
           v-show="activeTabIdx === 2"
           ref="sizerRate"
-          v-model="params.rate"
-          @change="getMovies"
+          v-model="params.year"
+          @change="changeParam"
         />
       </div>
       <div v-show="activeTabIdx !== -1" class="mask" @click="closeTab"/>
     </div>
     <div v-show="!loading" class="movie-wrapper">
-      <ScrollView :data="movies">
+      <ScrollView :data="movies" :pull-up-load="true" @pulling-up="loadMore">
         <Card
           v-for="movie in movies"
-          :key="movie._id"
+          :key="movie.filmId"
           :movie="movie"
           @select="selectItem"
         />
+        <div class="pull-up-wrap">
+          <p v-show="pullUpLoading">正在加载...</p>
+          <p v-show="noMore">没有更多了~</p>
+        </div>
+        <div style="height: 60px"/>
       </ScrollView>
       <div v-show="!movies.length" class="no-result">
         <img src="~common/images/noresult.png" class="img">
@@ -51,6 +56,10 @@
     <div v-show="loading" class="loading-wrap">
       <Loading/>
     </div>
+    <van-tabbar v-model="active">
+      <van-tabbar-item name="home" icon="home-o" @click="$router.push('/')">电影</van-tabbar-item>
+      <van-tabbar-item name="user" icon="user-o" @click="$router.push('/user')">我的</van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 
@@ -67,34 +76,64 @@ export default {
   },
   data () {
     return {
-      cats: ['分类', '已上映', '评分'],
+      cats: ['分类', '正在热映', '年代'],
+      page: 1,
+      count: 0,
+      pullUpLoading: false,
       activeTabIdx: 2,
       movies: [],
       params: {
-        categories: [],
-        rate: [0, 10],
+        category: 99,
+        year: 99,
         type: 1
       },
       loading: true
     }
   },
+  computed: {
+    noMore () {
+      return this.count === this.movies.length && this.count !== 0
+    }
+  },
   created () {
+    this.$store.state.showNav = true
     this.getMovies()
   },
   methods: {
+    loadMore () {
+      const { movies, count } = this
+      if (movies.length === count) return
+      this.page += 1
+      this.pullUpLoading = true
+      this.getMovies()
+    },
+    changeParam () {
+      this.movies = []
+      this.page = 1
+      this.getMovies()
+    },
     getMovies () {
       this.activeTabIdx = -1
       this.loading = true
-      const { categories, rate, type } = this.params
+      console.log(this.params)
+      const { category, year, type } = this.params
       const params = {
-        categories: JSON.stringify(categories),
-        rate: JSON.stringify(rate),
-        type: type
+        nowPage: this.page,
+        pageSize: 10,
+        catId: category,
+        yearId: year,
+        showType: type
       }
-      this.$axios.get('/api/movie/get_special_movies', { params }).then(res => {
-        if (res.code === 1001) {
-          this.movies = res.result.movies
+      console.log(params)
+      this.$axios.get('/meetingFilm/film/getFilms', { params }).then(res => {
+        console.log(res)
+        if (res.status === 0) {
+          this.movies = this.movies.concat(res.data)
+          this.count = res.totalPage
         }
+        this.$nextTick(() => {
+          this.pullUpLoading = false
+        })
         this.loading = false
       })
     },
@@ -102,6 +141,8 @@ export default {
     changeType ({ type, name }) {
       this.params.type = type
       this.cats[1] = name
+      this.page = 1
+      this.movies = []
       this.getMovies()
     },
     switchTab (idx) {
@@ -111,19 +152,19 @@ export default {
         return
       }
 
-      // 当选择未上映的时候，评分不可选
-      if (this.params.type === 0 && idx === 2) return
-
+      // 当选择正在热映和即将上映的时候，年代不可选
+      if (this.params.type === 1 && idx === 2) return
+      if (this.params.type === 2 && idx === 2) return
       this.activeTabIdx = idx
 
       // 当从其他tab点击第一个时，重置组件cacheList
       if (idx === 0) {
-        this.$refs.sizerCategory.resetCache()
+        // this.$refs.sizerCategory.resetCache()
       }
 
       if (idx === 2) {
         this.$nextTick(() => {
-          this.$refs.sizerRate.resetCache()
+          // this.$refs.sizerRate.resetCache()
         })
       }
     },
@@ -144,6 +185,11 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  .pull-up-wrap
+    height 30px
+    line-height 30px
+    text-align center
+    color $gray
 .nav-wrapper
   position fixed
   width 100%

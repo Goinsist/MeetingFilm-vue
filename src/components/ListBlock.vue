@@ -7,19 +7,18 @@
     <div v-if="movies.length" class="list">
       <div
         v-for="item in movies"
-        :key="item._id"
+        :key="item.filmId"
         class="item"
-        @click="$emit('select', item._id)"
+        @click="$emit('select', item.filmId)"
       >
         <div class="image">
-          <img v-lazy="item.poster" width="100%" height="100%">
-          <em v-if="item.isPlay === 1" class="rate">
-            {{ item.rate | toFixed }}
+          <img v-lazy="item.imgAddress" width="100%" height="100%">
+          <em v-if="item.filmStatus === 1||item.filmStatus === 3" class="rate">
+            {{ item.filmScore }}
           </em>
         </div>
-        <p class="title">{{ item.title }}</p>
+        <p class="title">{{ item.filmName }}</p>
       </div>
-      <div v-for="idx in (8 - movies.length)" :key="idx" class="item placeholder"/>
     </div>
     <div v-else class="loading-wrap">
       <Loading/>
@@ -31,12 +30,6 @@
 
 export default {
   name: 'ListBlock',
-
-  filters: {
-    toFixed (num) {
-      return num.toFixed(1)
-    }
-  },
   props: {
     movies: {
       type: Array,

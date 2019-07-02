@@ -1,18 +1,28 @@
 import axios from 'axios'
 import router from '@/router'
-import Cookie from 'js-cookie'
 
 const instance = axios.create({
   timeout: 60000,
   baseURL: '/'
 })
-const COOKIE_NAME = 'movie_trailer_user'
 
+// 添加请求拦截器，在请求头中加token
+instance.interceptors.request.use(
+  config => {
+    if (localStorage.getItem('Authorization')) {
+      console.log(localStorage.getItem('Authorization'))
+      config.headers.Authorization = localStorage.getItem('Authorization')
+    }
+
+    return config
+  },
+  error => {
+    return Promise.reject(error)
+  })
 instance.interceptors.response.use(res => {
   const { data } = res
   // 登录失效
-  if (data.code === 1003) {
-    Cookie.remove(COOKIE_NAME)
+  if (data.status === 700) {
     router.replace('/login')
     return
   }

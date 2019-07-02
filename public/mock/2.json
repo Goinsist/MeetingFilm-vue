@@ -1,0 +1,453 @@
+{
+  "errorCode": 0,
+  "errorMsg": "",
+  "name": "2号厅(CGS中国巨幕厅)",
+  "showTime": "2019-03-06 周五 16:50",
+  "ids":"1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+  "seatList": [
+    {
+      "id": "1",
+      "row": "1",
+      "col": "1",
+      "gRow": 1,
+      "gCol": 5,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "2",
+      "row": "1",
+      "col": "2",
+      "gRow": 1,
+      "gCol": 6,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "3",
+      "row": "1",
+      "col": "3",
+      "gRow": 1,
+      "gCol": 7,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "4",
+      "row": "1",
+      "col": "4",
+      "gRow": 1,
+      "gCol": 8,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "5",
+      "row": "1",
+      "col": "5",
+      "gRow": 1,
+      "gCol": 9,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "6",
+      "row": "1",
+      "col": "6",
+      "gRow": 1,
+      "gCol": 10,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "7",
+      "row": "1",
+      "col": "7",
+      "gRow": 1,
+      "gCol": 11,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "8",
+      "row": "2",
+      "col": "1",
+      "gRow": 2,
+      "gCol": 3,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "9",
+      "row": "2",
+      "col": "2",
+      "gRow": 2,
+      "gCol": 4,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "10",
+      "row": "2",
+      "col": "3",
+      "gRow": 2,
+      "gCol": 5,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+
+    {
+      "id": "11",
+      "row": "2",
+      "col": "4",
+      "gRow": 2,
+      "gCol": 6,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+
+    {
+      "id": "12",
+      "row": "2",
+      "col": "5",
+      "gRow": 2,
+      "gCol": 7,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+
+    {
+      "id": "13",
+      "row": "2",
+      "col": "6",
+      "gRow": 2,
+      "gCol": 8,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "14",
+      "row": "2",
+      "col": "7",
+      "gRow": 2,
+      "gCol": 9,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "15",
+      "row": "2",
+      "col": "8",
+      "gRow": 2,
+      "gCol": 10,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "16",
+      "row": "2",
+      "col": "9",
+      "gRow": 2,
+      "gCol": 11,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "17",
+      "row": "2",
+      "col": "10",
+      "gRow": 2,
+      "gCol": 12,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "18",
+      "row": "2",
+      "col": "11",
+      "gRow": 2,
+      "gCol": 13,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+
+    {
+      "id": "20",
+      "row": "3",
+      "col": "1",
+      "gRow": 3,
+      "gCol": 1,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "21",
+      "row": "3",
+      "col": "2",
+      "gRow": 3,
+      "gCol": 2,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+
+    {
+      "id": "22",
+      "row": "3",
+      "col": "3",
+      "gRow": 3,
+      "gCol": 3,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+
+    {
+      "id": "23",
+      "row": "3",
+      "col": "4",
+      "gRow": 3,
+      "gCol": 4,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "24",
+      "row": "3",
+      "col": "5",
+      "gRow": 3,
+      "gCol": 5,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "25",
+      "row": "3",
+      "col": "6",
+      "gRow": 3,
+      "gCol": 6,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "26",
+      "row": "3",
+      "col": "7",
+      "gRow": 3,
+      "gCol": 7,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "27",
+      "row": "3",
+      "col": "8",
+      "gRow": 3,
+      "gCol": 8,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "28",
+      "row": "3",
+      "col": "9",
+      "gRow": 3,
+      "gCol": 9,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "29",
+      "row": "3",
+      "col": "10",
+      "gRow": 3,
+      "gCol": 10,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "30",
+      "row": "3",
+      "col": "11",
+      "gRow": 3,
+      "gCol": 11,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "31",
+      "row": "3",
+      "col": "12",
+      "gRow": 3,
+      "gCol": 12,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "32",
+      "row": "3",
+      "col": "13",
+      "gRow": 3,
+      "gCol": 13,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "33",
+      "row": "3",
+      "col": "14",
+      "gRow": 3,
+      "gCol": 14,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    },
+    {
+      "id": "34",
+      "row": "3",
+      "col": "15",
+      "gRow": 3,
+      "gCol": 15,
+      "type": "0",
+      "flag": "0",
+      "price": "69"
+    }
+
+  ],
+  "seatTypeList": [
+    {
+      "name": "可选",
+      "type": "0",
+      "seats": 1,
+      "icon": "https://www.xollipop.top/可选.png",
+      "isShow": "1",
+      "position": "up"
+    },
+    {
+      "name": "已选",
+      "type": "0-1",
+      "seats": 1,
+      "icon": "https://www.xollipop.top/已选.png",
+      "isShow": "1",
+      "position": "up"
+    },
+    {
+      "name": "已售",
+      "type": "0-2",
+      "seats": 1,
+      "icon": "https://www.xollipop.top/已售.png",
+      "isShow": "1",
+      "position": "up"
+    },
+    {
+      "name": "维修",
+      "type": "0-3",
+      "seats": 1,
+      "icon": "https://www.xollipop.top/维修.png",
+      "isShow": "1",
+      "position": "up"
+    },
+    {
+      "name": "情侣首座可选",
+      "type": "1",
+      "seats": 1,
+      "icon": "https://www.xollipop.top/情侣首座可选.png",
+      "isShow": "0",
+      "position": "up"
+    },
+    {
+      "name": "情侣首座已选",
+      "type": "1-1",
+      "seats": 1,
+      "icon": "https://www.xollipop.top/情侣首座已选.png",
+      "isShow": "0",
+      "position": "up"
+    },
+    {
+      "name": "情侣首座已售",
+      "type": "1-2",
+      "seats": 1,
+      "icon": "https://www.xollipop.top/情侣首座已售.png",
+      "isShow": "0",
+      "position": "up"
+    },
+    {
+      "name": "情侣首座维修",
+      "type": "1-3",
+      "seats": 1,
+      "icon": "https://www.xollipop.top/情侣首座维修.png",
+      "isShow": "0",
+      "position": "up"
+    },
+    {
+      "name": "情侣次座可选",
+      "type": "2",
+      "seats": 1,
+      "icon": "https://www.xollipop.top/情侣次座可选.png",
+      "isShow": "0",
+      "position": "up"
+    },
+    {
+      "name": "情侣次座已选",
+      "type": "2-1",
+      "seats": 1,
+      "icon": "https://www.xollipop.top/情侣次座已选.png",
+      "isShow": "0",
+      "position": "up"
+    },
+    {
+      "name": "情侣次座已售",
+      "type": "2-2",
+      "seats": 1,
+      "icon": "https://www.xollipop.top/情侣次座已售.png",
+      "isShow": "0",
+      "position": "up"
+    },
+    {
+      "name": "情侣次座维修",
+      "type": "2-3",
+      "seats": 1,
+      "icon": "https://www.xollipop.top/情侣次座维修.png",
+      "isShow": "0",
+      "position": "up"
+    },
+    {
+      "name": "情侣座",
+      "type": "5",
+      "seats": 2,
+      "icon": "https://www.xollipop.top/情侣座.png",
+      "isShow": "1",
+      "position": "up"
+    }
+  ],
+  "cinema_name": "惊奇队长影院"
+}

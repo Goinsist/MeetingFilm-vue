@@ -3,15 +3,21 @@
     <ScrollView v-show="movieList.length" :data="movieList">
       <Card
         v-for="(movie, index) in movieList"
-        :key="movie._id"
+        :key="movie.filmId"
         :movie="movie"
         :sort="index + 1"
+
         @select="gotoDetail"
       />
+      <div style="height: 50px"/>
     </ScrollView>
     <div v-show="!movieList.length" class="loading-wrap">
       <Loading/>
     </div>
+    <van-tabbar v-model="active">
+      <van-tabbar-item name="home" icon="home-o" @click="$router.push('/recommend')">电影</van-tabbar-item>
+      <van-tabbar-item name="user" icon="user-o" @click="$router.push('/user')">我的</van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 
@@ -25,12 +31,19 @@ export default {
   },
   created () {
     this.getMovieList()
+    this.$store.state.showNav = true
   },
   methods: {
     getMovieList () {
-      this.$axios.get('/api/movie/get_rank').then(res => {
-        if (res.code === 1001) {
-          this.movieList = this.movieList.concat(res.result.movies)
+      this.$axios.get('/meetingFilm/film/getFilms', {
+        params: {
+          sortId: 3,
+          showType: 3
+        }
+
+      }).then(res => {
+        if (res.status === 0) {
+          this.movieList = this.movieList.concat(res.data)
         }
       })
     },

@@ -9,11 +9,11 @@
         <div class="list">
           <span
             v-for="item in hotKeys"
-            :key="item._id"
+            :key="item"
             class="item"
-            @click="addQuery(item.name)"
+            @click="addQuery(item)"
           >
-            {{ item.name }}
+            {{ item }}
           </span>
         </div>
       </div>
@@ -33,7 +33,7 @@
       <ScrollView :data="movieList">
         <Card
           v-for="movie in movieList"
-          :key="movie._id"
+          :key="movie.filmId"
           :movie="movie"
           @select="selectItem"
         />
@@ -44,6 +44,10 @@
       </div>
     </div>
     <Confirm ref="confirm" content="是否删除所有搜索历史" @confirm="clearSearchHistory"/>
+    <van-tabbar v-model="active">
+      <van-tabbar-item name="home" icon="home-o" @click="$router.push('/')">电影</van-tabbar-item>
+      <van-tabbar-item name="user" icon="user-o" @click="$router.push('/user')">我的</van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 
@@ -71,13 +75,15 @@ export default {
     ])
   },
   created () {
+    this.$store.state.showNav = true
     this.getHotKeys()
   },
   methods: {
     getHotKeys () {
-      this.$axios.get('/api/movie/get_hot_search').then(res => {
-        if (res.code === 1001) {
-          this.hotKeys = res.result.keywords
+      this.$axios.get('/meetingFilm/film/list5HotSearch').then(res => {
+        if (res.status === 0) {
+          console.log(res.data)
+          this.hotKeys = res.data
         }
       })
     },
@@ -88,11 +94,20 @@ export default {
 
       if (!query.trim()) return
 
-      const params = { keyword: query }
+      const params = {
+        searchParam: query,
+        searchType: 1,
+        isList: false
+      }
       this.timer = setTimeout(() => {
-        this.$axios.get('api/movie/search', { params }).then(res => {
-          if (res.code === 1001) {
-            this.movieList = res.result.movies
+        this.$axios.get('/meetingFilm/film/films', { params }).then(res => {
+          if (res.status === 0) {
+            console.log(res.data)
+            this.movieList = res.data
+            for (let i = 0; i < this.movieList.length; i++) {
+              this.movieList[i].filmScore = this.movieList[i].score
+              this.movieList[i].directorName = this.movieList[i].info04.actors.director.directorName
+            }
             this.isShow = true
           }
         })

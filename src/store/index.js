@@ -24,9 +24,17 @@ export default new Vuex.Store({
   strict: debug,
   state: {
     searchHistory: getSearch(),
-    user: getCookieUser()
+    user: getCookieUser(),
+    Authorization: localStorage.getItem('Authorization') ? localStorage.getItem('Authorization') : '',
+    showNav: true
   },
   mutations: {
+    // 修改token，并将token存入localStorage
+    changeLogin (state, user) {
+      state.Authorization = user.Authorization
+      localStorage.setItem('Authorization', user.Authorization)
+    },
+
     saveSearchHistory (state, query) {
       state.searchHistory = saveSearch(query)
     },

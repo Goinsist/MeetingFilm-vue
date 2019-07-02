@@ -1,5 +1,5 @@
 <template>
-  <header class="back-header">
+  <header class="back-header" >
     <i class="iconfont icon-left" @click="$router.back()"/>
     <slot/>
   </header>

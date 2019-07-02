@@ -60,7 +60,8 @@
 
 <script>
 import TheBackHeader from 'components/TheBackHeader'
-
+import qs from 'qs'
+import { mapMutations } from 'vuex'
 export default {
   components: {
     TheBackHeader
@@ -81,6 +82,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['changeLogin']),
     check () {
       // 邮箱正则
       const pattern = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/
@@ -100,31 +102,57 @@ export default {
     },
     login () {
       const { email, password } = this
-      this.$axios.post('/api/user/login', {
-        email,
-        password
+
+      this.$axios.get('/meetingFilm/auth', {
+        params: {
+          userName: email,
+          password
+
+        }
+
       }).then(res => {
-        if (res.code === 1001) {
-          this.$store.commit('setUserInfo', res.result.user)
-          this.$router.push('/user')
+        if (res.status === 0) {
+          let userToken = 'Bearer ' + res.data.token
+          // 将用户token保存到vuex中
+          console.log(userToken)
+          this.changeLogin({ Authorization: userToken })
+
+          this.$router.push('/recommend')
         } else {
-          this.errMsg = res.errmsg
+          this.errMsg = '用户名或密码错误!'
         }
       })
     },
     register () {
       const { email, username, password } = this
-      this.$axios.post('/api/user/register', {
-        email,
-        username,
+      console.log(username)
+
+      let regist = {
+        username: username,
+        email: email,
         password
-      }).then(res => {
-        if (res.code === 1001) {
-          this.confirmText = '注册成功！是否前往登录'
-        } else {
-          this.confirmText = '邮箱已存在！是否直接登录'
+      }
+      this.$axios.get('/meetingFilm/user/check', {
+        params: {
+          username,
+          email
         }
-        this.$refs.confirm.show()
+
+      }
+
+      ).then(res => {
+        if (res.status === 0) {
+          this.$axios.post('/meetingFilm/user/register', qs.stringify(regist)).then(res => {
+            if (res.status === 0) {
+              this.confirmText = '注册成功！是否前往登录'
+            } else {
+              this.errMsg = '系统错误!请稍后再试'
+            }
+            this.$refs.confirm.show()
+          })
+        } else {
+          this.errMsg = res.msg
+        }
       })
     },
     changeType () {
@@ -165,7 +193,7 @@ export default {
         input
           flex 1
           position relative
-          padding 10px 50px 10px 10px
+
           outline none
           border none
           font-size 18px

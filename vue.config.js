@@ -36,8 +36,9 @@ module.exports = {
       .set('components', resolve('src/components'))
       .set('views', resolve('src/views'))
     config.devServer.proxy({
-      '/api': {
-        target: 'http://movie.ihaoze.cn/'
+      '/meetingFilm': {
+        target: 'http://47.102.145.82',
+        pathRewrite: { '^/meetingFilm': '' }
       }
     })
     config.externals(externals)
@@ -47,6 +48,7 @@ module.exports = {
         return args
       })
   },
+
   css: {
     loaderOptions: {
       stylus: {

@@ -1,169 +1,94 @@
 <template>
-  <div class="rate-wrapper">
-    <div
-      ref="bar"
-      class="bar"
-    >
-      <div class="mask" :style="style"/>
-      <div
-        ref="barBtn1"
-        class="bar-btn"
-        data-idx="1"
-        @touchstart.prevent="touchStart"
-        @touchmove.prevent="touchMove"
-        @touchend="touchEnd"
-      />
-      <div
-        ref="barBtn2"
-        class="bar-btn"
-        data-idx="2"
-        @touchstart.prevent="touchStart"
-        @touchmove.prevent="touchMove"
-        @touchend="touchEnd"
-      />
+  <div class="year-wrapper">
+    <div class="list" >
+      <span
+        v-for="item in list"
+        :key="item.yearId"
+        :class="{'active': cache===item.yearId}"
+        class="item"
+        @click="selectItem(item.yearId)"
+      >
+        {{ item.yearName }}
+      </span>
     </div>
-    <button class="confirm-btn" @click="confirm">完成</button>
   </div>
 </template>
 
 <script>
 export default {
   model: {
-    prop: 'rate',
+    prop: 'years',
     event: 'change'
   },
   props: {
-    rate: {
+    categories: {
       type: Array,
       required: true
     }
   },
   data () {
     return {
-      cacheRate: [],
-      style: {}
+      list: [],
+      cache: ''
+
     }
   },
   created () {
-    this.touch = {}
+    this.getYears()
   },
   methods: {
+
+    getYears () {
+      this.$axios.get('/meetingFilm/film/getConditionList').then(res => {
+        if (res.status === 0) {
+          this.list = res.data.yearInfo
+        }
+      })
+    },
     resetCache () {
-      if (!this.dots) {
-        this.generateDots()
-      }
-
-      this.cacheRate = this.rate
-
-      const [start, end] = this.cacheRate
-      this.$refs.barBtn1.style.left = this.dots[start] + 'px'
-      this.$refs.barBtn2.style.left = this.dots[end] + 'px'
-
-      this.setStyle()
+      this.cacheList = this.categories.slice()
     },
-    // 生成rateBar上面的阈值点，起始是0，末尾是总长度。
-    generateDots () {
-      this.dots = [0]
-      this.width = this.$refs.bar.getBoundingClientRect().width
-      for (let i = 1; i < 10; i++) {
-        const dot = document.createElement('div')
-        dot.className = 'bar-dot'
-        const left = i * 0.1 * this.width
-        // console.log(parseInt(left) - 7)
-        this.dots.push(parseInt(left) - 7)
-        dot.style.left = parseInt(left) + 'px'
-        this.$refs.bar.appendChild(dot)
-      }
-      // 减去btn的宽度
-      this.dots.push(this.width - 7)
-    },
-    // 设置mask黄色区块的长度和偏移量
-    setStyle () {
-      const x1 = parseInt(this.$refs.barBtn1.style.left)
-      const x2 = parseInt(this.$refs.barBtn2.style.left)
-      const position = [x1, x2].sort((a, b) => a - b)
-      this.style = {
-        width: (position[1] - position[0]) + 'px',
-        left: position[0] + 'px'
-      }
-    },
-    touchStart (e) {
-      this.touch.initiated = true
-      e.target.style.transform = 'scale(1.3)'
-    },
-    touchMove (e) {
-      if (!this.touch.initiated) return
-      const otherIdx = this.dots.indexOf(parseInt(e.target.style.left))
-      // console.log(otherIdx)
-      const otherRate = this.cacheRate[1 - this.cacheRate.indexOf(otherIdx)]
-      const offSetWidth = Math.min(Math.max(0, e.touches[0].pageX - 30), this.width)
-      const deltaArr = this.dots.map(it => Math.abs(parseInt(it - offSetWidth)))
-      const min = Math.min(...deltaArr)
-      const minIndx = deltaArr.findIndex(it => it === min)
-      // console.log(this.dots)
-      // console.log(this.dots[minIndx])
-      e.target.style.left = this.dots[minIndx] + 'px'
-
-      this.cacheRate = [otherRate, minIndx].sort((a, b) => a - b)
-      // console.log(this.cacheRate)
-
-      this.setStyle()
-    },
-    touchEnd (e) {
-      this.touch.initiated = false
-      e.target.style.transform = 'scale(1.0)'
-    },
-    confirm () {
-      // console.log(this.cacheRate)
-      this.$emit('change', this.cacheRate)
+    selectItem (yearId) {
+      this.cache = yearId
+      console.log(this.cache)
+      // const arr = this.cacheList.slice()
+      // const idx = arr.indexOf(catId)
+      // if (idx > -1) {
+      //   arr.splice(idx, 1)
+      // } else {
+      //   arr.push(catId)
+      // }
+      // this.cacheList = arr
+      this.$emit('change', Number(this.cache))
     }
+
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-.rate-wrapper
-  display flex
-  flex-direction column
-  justify-content center
-  height 80px
-  padding 0 20px
-  .bar
-    position relative
-    width 100%
-    height 5px
-    background-color #ccc
-    border-radius 3px
-    .bar-btn
-      position absolute
-      left 0
-      top -5px
-      width 10px
-      height 10px
-      border 2px solid #ffc46c
-      background-color #fff
-      border-radius 50%
-      z-index 10
-    .mask
-      position absolute
-      height 5px
-      background #ffc46c
+  .year-wrapper
+    padding 10px 25px
+    .list
+      display flex
+      flex-wrap wrap
+      .item
+        padding 6px 12px
+        margin: 0 10px 10px 0
+        border-radius 5px
+        font-size 13px
+        color #777
+        border 1px solid #ccc
+        &.active
+          border-color #faaf00
+          background #faaf00
+          color #fff
+    .confirm-btn
+      width 60px
+      height 30px
+      background #409eff
+      color #fff
+      border none
+      outline none
       border-radius 3px
-.confirm-btn
-  width 60px
-  height 30px
-  margin-top 20px
-  background #409eff
-  color #fff
-  border none
-  outline none
-  border-radius 3px
-</style>
-<style lang="stylus">
-.bar-dot
-  position absolute
-  width 5px
-  height 5px
-  border-radius 100%
-  background #fff
 </style>

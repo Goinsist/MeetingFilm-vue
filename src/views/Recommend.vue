@@ -1,5 +1,9 @@
 <template>
   <div class="recommend">
+    <van-notice-bar
+      text="复仇者联盟4火热上映，现票价仅需121元即可购买，还附赠爆米花、饮料，让你享受激情一夏,另购买特殊套餐,还将附赠钢铁侠公仔一只"
+      left-icon="volume-o"
+    />
     <ScrollView :data="movies">
       <ListBLock
         :movies="playingMovies"
@@ -11,10 +15,22 @@
       <ListBLock
         :movies="commingMovies"
         :title="`即将上映(${commingCount})`"
-        @more="goMore(0)"
+        @more="goMore(2)"
         @select="selectItem"
       />
+      <Spacing bg-color="#f6f6f6" :height="10"/>
+      <ListBLock
+        :movies="classicMovies"
+        :title="`经典影片(${classicCount})`"
+        @more="goMore(3)"
+        @select="selectItem"
+      />
+      <div style="height: 60px"/>
     </ScrollView>
+    <van-tabbar v-model="active">
+      <van-tabbar-item name="home" icon="home-o" @click="$router.push('/recommend')">电影</van-tabbar-item>
+      <van-tabbar-item name="user" icon="user-o" @click="$router.push('/user')">我的</van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 
@@ -30,26 +46,37 @@ export default {
       commingMovies: [],
       commingCount: 0,
       playingMovies: [],
-      playingCount: 0
+      playingCount: 0,
+      classicMovies: [],
+      classicCount: 0
     }
   },
   computed: {
-    movies () {
-      return this.commingMovies.concat(this.playingMovies)
-    }
+    // movies () {
+    //   return this.commingMovies.concat(this.playingMovies)
+    // }
   },
   created () {
+    this.$store.state.showNav = true
+
     this.getMovie()
   },
   methods: {
+    userProfile () {
+      this.$router.push(`/user`)
+    },
     getMovie () {
-      this.$axios.get('/api/movie/get_hot').then(res => {
-        if (res.code === 1001) {
-          const { comming, playing } = res.result
-          this.commingMovies = comming.movies
-          this.commingCount = comming.count
-          this.playingMovies = playing.movies
-          this.playingCount = playing.count
+      this.$axios.get('/meetingFilm/film/getIndex').then(res => {
+        if (res.status === 0) {
+          console.log(res)
+          const { soonFilms, hotFilms, classicFilms } = res.data
+          this.commingMovies = soonFilms.filmInfo
+          this.commingCount = soonFilms.filmNum
+          this.playingMovies = hotFilms.filmInfo
+          this.playingCount = hotFilms.filmNum
+          this.classicMovies = classicFilms.filmInfo
+          this.classicCount = classicFilms.filmNum
+          console.log(this.playingMovies)
         }
       })
     },

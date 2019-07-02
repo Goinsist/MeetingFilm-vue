@@ -3,15 +3,14 @@
     <div class="list">
       <span
         v-for="item in list"
-        :key="item._id"
-        :class="{'active': cacheList.includes(item.name)}"
+        :key="item.catId"
+        :class="{'active': cache===item.catId}"
         class="item"
-        @click="selectItem(item.name)"
+        @click="selectItem(item.catId)"
       >
-        {{ item.name }}
+        {{ item.catName }}
       </span>
     </div>
-    <button class="confirm-btn" @click="confirm">完成</button>
   </div>
 </template>
 
@@ -30,7 +29,7 @@ export default {
   data () {
     return {
       list: [],
-      cacheList: []
+      cache: ''
     }
   },
   created () {
@@ -38,28 +37,29 @@ export default {
   },
   methods: {
     getCategories () {
-      this.$axios.get('/api/category/get_cates').then(res => {
-        if (res.code === 1001) {
-          this.list = res.result.cates
+      this.$axios.get('/meetingFilm/film/getConditionList').then(res => {
+        if (res.status === 0) {
+          this.list = res.data.catInfo
         }
       })
     },
     resetCache () {
       this.cacheList = this.categories.slice()
     },
-    selectItem (name) {
-      const arr = this.cacheList.slice()
-      const idx = arr.indexOf(name)
-      if (idx > -1) {
-        arr.splice(idx, 1)
-      } else {
-        arr.push(name)
-      }
-      this.cacheList = arr
-    },
-    confirm () {
-      this.$emit('change', this.cacheList)
+    selectItem (catId) {
+      this.cache = catId
+      console.log(this.cache)
+      // const arr = this.cacheList.slice()
+      // const idx = arr.indexOf(catId)
+      // if (idx > -1) {
+      //   arr.splice(idx, 1)
+      // } else {
+      //   arr.push(catId)
+      // }
+      // this.cacheList = arr
+      this.$emit('change', Number(this.cache))
     }
+
   }
 }
 </script>
