@@ -37,7 +37,7 @@ module.exports = {
       .set('views', resolve('src/views'))
     config.devServer.proxy({
       '/meetingFilm': {
-        target: 'http://47.102.145.82',
+        target: 'your ip',
         pathRewrite: { '^/meetingFilm': '' }
       }
     })

@@ -575,6 +575,7 @@ export default {
     img {
         width: 100%;
         display: block;
+      pointer-events: none;
     }
 }
 </style>
