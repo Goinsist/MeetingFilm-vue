@@ -37,6 +37,7 @@ module.exports = {
       .set('views', resolve('src/views'))
     config.devServer.proxy({
       '/meetingFilm': {
+        // 你后端的ip
         target: 'your ip',
         pathRewrite: { '^/meetingFilm': '' }
       }

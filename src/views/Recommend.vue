@@ -25,7 +25,7 @@
         @more="goMore(3)"
         @select="selectItem"
       />
-      <div style="height: 60px"/>
+      <div style="height: 68px"/>
     </ScrollView>
     <van-tabbar v-model="active">
       <van-tabbar-item name="home" icon="home-o" @click="$router.push('/recommend')">电影</van-tabbar-item>

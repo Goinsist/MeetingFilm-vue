@@ -172,13 +172,13 @@ export default {
     },
     post_move (param) {
       let releaseDate = param.split(' ')[1]
-      let nowYear = new Date(releaseDate).getFullYear()
+      let nowYear = new Date(releaseDate.replace(/-/g, '/')).getFullYear()
       console.log('点击日期: ' + new Date(releaseDate).getMonth())
-      let nowMonth = new Date(releaseDate).getMonth() + 1
+      let nowMonth = new Date(releaseDate.replace(/-/g, '/')).getMonth() + 1
       if (nowMonth < 10) {
         nowMonth = '0' + nowMonth
       }
-      let nowDay = new Date(releaseDate).getDate()
+      let nowDay = new Date(releaseDate.replace(/-/g, '/')).getDate()
       if (nowDay < 10) {
         nowDay = '0' + nowDay
       }
@@ -227,11 +227,11 @@ export default {
     },
     format () {
       let date = new Date()
-      let resentYear = new Date(this.showDays[0]).getFullYear() // 年
+      let resentYear = new Date(this.showDays[0].replace(/-/g, '/')).getFullYear() // 年
 
-      let resentMonth = new Date(this.showDays[0]).getMonth() + 1 // 月
+      let resentMonth = new Date(this.showDays[0].replace(/-/g, '/')).getMonth() + 1 // 月
       console.log(resentMonth)
-      let resentDay = new Date(this.showDays[0]).getDate() // 日
+      let resentDay = new Date(this.showDays[0].replace(/-/g, '/')).getDate() // 日
       let nowYear = date.getFullYear() // 获取当前年
       let nowMonth = date.getMonth() + 1 // 获取当前月
 
@@ -274,12 +274,12 @@ export default {
             } else {
               let week = this.week(
                 new Date(
-                  resentYear +
+                  (resentYear +
                                         '-' +
                                         resentMonth +
                                         '-' +
                                         (resentDay + i)
-                ).getDay()
+                  ).replace(/-/g, '/')).getDay()
               )
               this.showDays.push(
                 week + ' ' +
@@ -326,12 +326,12 @@ export default {
             } else {
               var week = this.week(
                 new Date(
-                  resentYear +
+                  (resentYear +
                                         '-' +
                                         resentMonth +
                                         '-' +
                                         resentDay
-                ).getDay()
+                  ).replace(/-/g, '/')).getDay()
               )
               this.showDays.push(
                 week + ' ' +
@@ -345,7 +345,7 @@ export default {
           }
         }
       } else if (
-        new Date(this.showDays[0]).getTime() < new Date().getTime()
+        new Date(this.showDays[0].replace(/-/g, '/')).getTime() < new Date().getTime()
       ) {
         // 电影上映的那天比今天早
         this.showDays.length = 0
@@ -380,12 +380,12 @@ export default {
             } else {
               let week = this.week(
                 new Date(
-                  nowYear +
+                  (nowYear +
                                         '-' +
                                         nowMonth +
                                         '-' +
                                         (nowDay + i)
-                ).getDay()
+                  ).replace(/-/g, '/')).getDay()
               )
               this.showDays.push(
                 week + ' ' +
@@ -438,8 +438,8 @@ export default {
             } else {
               let week = this.week(
                 new Date(
-                  nowYear + '-' + nowMonth + '-' + nowDay
-                ).getDay()
+                  (nowYear + '-' + nowMonth + '-' + nowDay
+                  ).replace(/-/g, '/')).getDay()
               )
               this.showDays.push(
                 week + nowYear + '-' + nowMonth + '-' + nowDay
@@ -456,12 +456,12 @@ export default {
             }
             let week = this.week(
               new Date(
-                resentYear +
+                (resentYear +
                                     '-' +
                                     resentMonth +
                                     '-' +
                                     (resentDay + i)
-              ).getDay()
+                ).replace(/-/g, '/')).getDay()
             )
             this.showDays.push(
               week +
@@ -489,8 +489,8 @@ export default {
             }
             let week = this.week(
               new Date(
-                resentYear + '-' + resentMonth + '-' + resentDay
-              ).getDay()
+                (resentYear + '-' + resentMonth + '-' + resentDay
+                ).replace(/-/g, '/')).getDay()
             )
             this.showDays.push(
               week +
