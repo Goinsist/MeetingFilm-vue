@@ -2,7 +2,7 @@
   <div id="header">
     <!-- <div class="back" v-show="showLeft" @click="backClick"> 返回</div> -->
     <slot name="leftView"><i class="iconfont icon-left" @click="$router.back()"/></slot>
-    <slot name="titleView"><div class="title">{{ this.$route.query.filmName+' '+this.$route.query.cinemaName }}</div></slot>
+    <slot name="titleView"><div class="title">{{ this.$route.query.cinemaName }}</div></slot>
 
     <slot/>
   </div>

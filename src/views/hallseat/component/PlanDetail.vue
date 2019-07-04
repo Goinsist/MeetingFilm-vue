@@ -6,6 +6,7 @@
 <template>
   <div>
     <div class="plan-detail">
+      <div class="plan-detail-item" style="font-weight: bold">{{ this.$route.query.filmName }}</div>
       <div class="plan-detail-item">{{ this.$route.query.showDate }}</div>
       <div class="plan-detail-item">{{ this.$route.query.showTime }}</div>
       <div class="plan-detail-item">{{ this.$route.query.language }}</div>

@@ -102,6 +102,7 @@ export default {
       detailmovie: {}, // 电影详情
       cinema: [], // 电影上映日期等
       day_m: '',
+      showDate: '',
       offset: 0, // 请求数据数量
       showDays: [],
       ciId: '',
@@ -183,6 +184,7 @@ export default {
         nowDay = '0' + nowDay
       }
       releaseDate = nowYear + '-' + nowMonth + '-' + nowDay
+      this.showDate = releaseDate
       // 影院信息
       this.$axios
         .get(
@@ -222,7 +224,7 @@ export default {
           cinemaId: cinemaId
 
         },
-        query: { movieId: this.movieId, cinemaShowDate: this.day_index }
+        query: { movieId: this.movieId, cinemaShowDate: this.showDate }
       })
     },
     format () {
@@ -532,6 +534,19 @@ export default {
     // 时间切换,渲染其他影院信息
     changeTime (param, index) {
       this.day_index = index
+      let releaseDate = param.split(' ')[1]
+      let nowYear = new Date(releaseDate.replace(/-/g, '/')).getFullYear()
+      console.log('点击日期: ' + new Date(releaseDate).getMonth())
+      let nowMonth = new Date(releaseDate.replace(/-/g, '/')).getMonth() + 1
+      if (nowMonth < 10) {
+        nowMonth = '0' + nowMonth
+      }
+      let nowDay = new Date(releaseDate.replace(/-/g, '/')).getDate()
+      if (nowDay < 10) {
+        nowDay = '0' + nowDay
+      }
+      releaseDate = nowYear + '-' + nowMonth + '-' + nowDay
+      this.showDate = releaseDate
 
       this.post_move(param)
     },

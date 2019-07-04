@@ -61,7 +61,7 @@
             v-for="(item, index) in showData[movieIndex].filmFields[plist_index].showDates"
             :key="index"
             class="dp_wx_cinema_show_item"
-            @click="selectSeat(item.fieldId,item.hallId,item.beginTime,item.language,item.hallName)"
+            @click="selectSeat(item.fieldId,item.hallId,item.beginTime,item.language,item.hallName,item.price)"
           >
             <div class="item box-flex">
               <div class="time-block">
@@ -122,8 +122,8 @@ export default {
       vipInfo: [],
       plist: [],
       dealList: [],
-      plist_index: Number(this.$route.query.cinemaShowDate),
-      isSwitch: Number(this.$route.query.cinemaShowDate), // 日期active
+      plist_index: 0,
+      isSwitch: 0, // 日期active
       swiperOption: {
         slidesPerView: 'auto', // 两侧的张数设为auto
         spaceBetween: 30, // swiper-slide之间的空隙（margin值）
@@ -189,7 +189,12 @@ export default {
             hash.push(arr[i].showDate)
           }
         }
-
+        for (let j = 0; j < hash.length; j++) {
+          if (this.$route.query.cinemaShowDate === hash[j]) {
+            this.isSwitch = j
+            this.plist_index = j
+          }
+        }
         this.shows = hash
         // this.vipInfo = res.data.showData.vipInfo[0]
         // this.dealList = res.data.dealList.dealList // 超值套餐数据
@@ -218,7 +223,7 @@ export default {
         // this.$store.commit('changeHt', this.cinemaData.nm)
       })
     },
-    selectSeat (fieldId, hallId, beginTime, language, hallName) {
+    selectSeat (fieldId, hallId, beginTime, language, hallName, price) {
       this.$router.push({
         name: 'hallSeat',
         query: { fieldId: fieldId,
@@ -228,7 +233,9 @@ export default {
           showDate: this.showData[this.movieIndex].filmFields[this.plist_index].showDate,
           showTime: beginTime,
           language: language,
-          hallName: hallName }
+          hallName: hallName,
+          price: price
+        }
       })
     },
     picFix (wh) {
@@ -239,6 +246,8 @@ export default {
     // 点击图片切换影片
     switchThis (e) {
       this.movieIndex = this.swiper.snapIndex
+      this.isSwitch = 0
+      this.plist_index = 0
       // this.shows = this.showData[this.movieIndex].filmFields
     },
     // 日期切换

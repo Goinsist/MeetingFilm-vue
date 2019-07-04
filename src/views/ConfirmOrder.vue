@@ -57,7 +57,7 @@
     >
       <van-image
         v-if="qrCode!==''"
-        style="margin-left: 20%"
+        style="left: 20%"
         :src="qrCode"
       />
     </van-dialog>
