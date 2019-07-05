@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="cinemaDetail">
     <TheBackHeader>
-      <span>{{ cinemaData.cinemaName }}</span>
+      <span style="font-size: 33px">{{ cinemaData.cinemaName }}</span>
     </TheBackHeader>
     <div class="cinemaName">
       <h1 class="title">{{ cinemaData.cinemaName }}</h1>
@@ -33,9 +33,9 @@
       <!-- 电影介绍 -->
       <div v-if="showData[movieIndex]" class="movie-info">
         <div class="movie-title">
-          <span class="title">{{ this.showData[movieIndex].filmName }}</span>
+          <span class="title">{{ showData[movieIndex].filmName }}</span>
         </div>
-        <div class="desc textOverflow1">{{ this.showData[movieIndex].desc }}</div>
+        <div class="desc textOverflow1">{{ showData[movieIndex].desc }}</div>
       </div>
     </div>
     <!-- 日期 -->

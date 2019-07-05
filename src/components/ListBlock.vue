@@ -1,7 +1,7 @@
 <template>
   <section class="list-block">
     <div class="info" @click="$emit('more')">
-      <h1 class="title">{{ title }}</h1>
+      <h1 class="title" style="43px">{{ title }}</h1>
       <i class="iconfont icon-right"/>
     </div>
     <div v-if="movies.length" class="list">
@@ -13,11 +13,11 @@
       >
         <div class="image">
           <img v-lazy="item.imgAddress" width="100%" height="100%">
-          <em v-if="item.filmStatus === 1||item.filmStatus === 3" class="rate">
+          <em v-if="item.filmStatus === 1||item.filmStatus === 3" style="font-size: 39px" class="rate">
             {{ item.filmScore }}
           </em>
         </div>
-        <p class="title">{{ item.filmName }}</p>
+        <p class="title" style="font-size: 33px">{{ item.filmName }}</p>
       </div>
     </div>
     <div v-else class="loading-wrap">
@@ -45,26 +45,29 @@ export default {
 
 <style lang="stylus" scoped>
 .list-block
-  padding 15px
-  min-height 100px
+  padding-top  10px
+  min-height 900px
+
   text-align center
   .info
     display flex
     justify-content space-between
     margin-bottom 15px
     font-weight bold
-    font-size 20px
+    height 40px
+    font-size 40px
+
     .iconfont
-      font-size 20px
+      font-size 40px
   .list
     display flex
     justify-content space-between
     flex-wrap wrap
     .item
-      width 24%
+      width 31%
       .image
         position relative
-        height: 80%;
+
         .rate
           position absolute
           right 5px
@@ -73,8 +76,9 @@ export default {
           font-weight bold
           font-style italic
       .title
-        padding: 10px 0
+        padding: 15px 0
         white-space nowrap
+
         overflow hidden
         text-overflow ellipsis
         font-size 14px

@@ -1,9 +1,9 @@
 <template lang="html">
   <div v-if="detailmovie.length!==0" id="movie_detail_wrapper">
     <TheBackHeader>
-      <span>{{ detailmovie.filmName }}</span>
+      <span style="font-size: 33px">{{ detailmovie.filmName }}</span>
     </TheBackHeader>
-    <section id="movie_detail">
+    <section id="movie_detail" >
       <div class="movie-fliter"/>
 
       <div v-if="detailmovie.filmPoster" class="img_bg" :style="{backgroundImage: `url(${detailmovie.filmPoster})`}"/>
@@ -72,7 +72,6 @@
         </li>
       </ul>
       <!-- loading 加载组件 -->
-      <mt-spinner color="rgb(100, 100, 100)" type="fading-circle" class="loading"/>
     </section>
   </div>
 </template>

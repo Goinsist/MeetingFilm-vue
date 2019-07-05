@@ -44,16 +44,18 @@ export default {
 .search-box
   display flex
   align-items center
+  text-align center
+  height 80px
   padding 0 10px
   background #fff
   border 1px solid #e6e6e6
   border-radius 5px
   .iconfont
-    font-size 17px
+    font-size 57px
     color $gray
   .search-input
-    margin 8px 20px 8px 5px
-    font-size 13px
+    margin 12px 20px 8px 5px
+    font-size 49px
     border none
     outline none
     width calc(100% - 60px)

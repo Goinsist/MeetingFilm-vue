@@ -44,7 +44,6 @@
         />
         <div class="pull-up-wrap">
           <p v-show="pullUpLoading">正在加载...</p>
-          <p v-show="noMore">没有更多了~</p>
         </div>
         <div style="height: 60px"/>
       </ScrollView>
@@ -56,10 +55,8 @@
     <div v-show="loading" class="loading-wrap">
       <Loading/>
     </div>
-    <van-tabbar v-model="active">
-      <van-tabbar-item name="home" icon="home-o" @click="$router.push('/')">电影</van-tabbar-item>
-      <van-tabbar-item name="user" icon="user-o" @click="$router.push('/user')">我的</van-tabbar-item>
-    </van-tabbar>
+
+    <Footer/>
   </div>
 </template>
 
@@ -67,12 +64,13 @@
 import SizerCategory from 'components/SizerCategory'
 import SizerType from 'components/SizerType'
 import SizerRate from 'components/SizerRate'
-
+import Footer from '../components/Footer'
 export default {
   components: {
     SizerType,
     SizerRate,
-    SizerCategory
+    SizerCategory,
+    Footer
   },
   data () {
     return {
@@ -197,14 +195,14 @@ export default {
   background #fff
   .tabs
     display flex
-    height 40px
-    line-height 40px
+    height 86px
+    line-height 80px
     border-bottom 1px solid #eee
     .item
       position relative
       flex 1
       text-align center
-      font-size 13px
+      font-size 23px
       color #777
       &.active
         color $theme-color
@@ -223,18 +221,18 @@ export default {
   .tab-content
       position absolute
       width 100%
-      min-height 50px
+      min-height 180px
       background #fff
       z-index 10
   .mask
     position fixed
-    top 96px
+    top 196px
     bottom 0
     width 100%
     background rgba(0, 0, 0, .3)
 .movie-wrapper, .loading-wrap
   position fixed
-  top 96px
+  top 180px
   bottom 0
   width 100%
   .no-result

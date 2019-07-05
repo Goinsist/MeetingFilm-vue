@@ -34,7 +34,7 @@ export default {
     position fixed
     display flex
     width 100%
-    height 56px
+    height 86px
     line-height 56px
     color: $gray
     background $theme-color
@@ -50,20 +50,26 @@ export default {
     .tabs
       display flex
       flex 1
-      font-size 17px
+      font-size 29px
       .item
         flex 1
         text-align center
+
         a
-          height 56px
+          margin-top 20px
+          width 112px
+          text-align center
+          height 66px
           color: $gray
           display inline-block
           box-sizing border-box
     .user
       width 15%
+      height 66px
+      margin-top 20px
       text-align center
       .icon-user
-        font-size 25px
+        font-size 31px
     .router-link-active
       font-weight: 700
       color #fff!important

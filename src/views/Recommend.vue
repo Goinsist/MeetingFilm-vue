@@ -1,6 +1,7 @@
 <template>
   <div class="recommend">
     <van-notice-bar
+      style="height: 90px;font-size: 33px"
       text="复仇者联盟4火热上映，现票价仅需121元即可购买，还附赠爆米花、饮料，让你享受激情一夏,另购买特殊套餐,还将附赠钢铁侠公仔一只"
       left-icon="volume-o"
     />
@@ -13,6 +14,7 @@
       />
       <Spacing bg-color="#f6f6f6" :height="10"/>
       <ListBLock
+
         :movies="commingMovies"
         :title="`即将上映(${commingCount})`"
         @more="goMore(2)"
@@ -25,21 +27,19 @@
         @more="goMore(3)"
         @select="selectItem"
       />
-      <div style="height: 68px"/>
+      <div style="height: 78px"/>
     </ScrollView>
-    <van-tabbar v-model="active">
-      <van-tabbar-item name="home" icon="home-o" @click="$router.push('/recommend')">电影</van-tabbar-item>
-      <van-tabbar-item name="user" icon="user-o" @click="$router.push('/user')">我的</van-tabbar-item>
-    </van-tabbar>
+    <Footer/>
   </div>
 </template>
 
 <script>
 import ListBLock from 'components/ListBlock'
-
+import Footer from '../components/Footer'
 export default {
   components: {
-    ListBLock
+    ListBLock,
+    Footer
   },
   data () {
     return {

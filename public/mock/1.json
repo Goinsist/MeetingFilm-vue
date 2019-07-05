@@ -341,7 +341,7 @@
       "name": "维修",
       "type": "0-3",
       "seats": 1,
-      "icon": "https://www.xollipop.top/维修.png",
+      "icon": "http://img.gongyu91.cn/repair.png",
       "isShow": "1",
       "position": "up"
     },
@@ -349,7 +349,7 @@
       "name": "情侣首座可选",
       "type": "1",
       "seats": 1,
-      "icon": "http://img.gongyu91.cn/coupple0.png",
+      "icon": "http://img.gongyu91.cn/coupleleft.png",
       "isShow": "0",
       "position": "up"
     },
@@ -357,7 +357,7 @@
       "name": "情侣首座已选",
       "type": "1-1",
       "seats": 1,
-      "icon": "https://www.xollipop.top/情侣首座已选.png",
+      "icon": "http://img.gongyu91.cn/couple-left-selected.png",
       "isShow": "0",
       "position": "up"
     },
@@ -365,7 +365,7 @@
       "name": "情侣首座已售",
       "type": "1-2",
       "seats": 1,
-      "icon": "https://www.xollipop.top/情侣首座已售.png",
+      "icon": "http://img.gongyu91.cn/couple-left-sold.png",
       "isShow": "0",
       "position": "up"
     },
@@ -381,7 +381,7 @@
       "name": "情侣次座可选",
       "type": "2",
       "seats": 1,
-      "icon": "http://img.gongyu91.cn/coupple1.png",
+      "icon": "http://img.gongyu91.cn/coupleright.png",
       "isShow": "0",
       "position": "up"
     },
@@ -389,7 +389,7 @@
       "name": "情侣次座已选",
       "type": "2-1",
       "seats": 1,
-      "icon": "https://www.xollipop.top/情侣次座已选.png",
+      "icon": "http://img.gongyu91.cn/couple-right-selected.png",
       "isShow": "0",
       "position": "up"
     },
@@ -397,7 +397,7 @@
       "name": "情侣次座已售",
       "type": "2-2",
       "seats": 1,
-      "icon": "https://www.xollipop.top/情侣次座已售.png",
+      "icon": "http://img.gongyu91.cn/couple-right-sold.png",
       "isShow": "0",
       "position": "up"
     },
@@ -413,7 +413,7 @@
       "name": "情侣座",
       "type": "5",
       "seats": 2,
-      "icon": "https://www.xollipop.top/情侣座.png",
+      "icon": "http://img.gongyu91.cn/couple.png",
       "isShow": "1",
       "position": "up"
     }

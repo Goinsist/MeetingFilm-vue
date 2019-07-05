@@ -137,6 +137,7 @@ export default {
     }
   },
   computed: {
+
     // 座位区域高度rem
     seatAreaHeightRem: function () {
       let screenRem = (document.body.clientWidth || window.innerWidth || document.documentElement.clientWidth) / 10
@@ -244,6 +245,7 @@ export default {
   //   next()
   // },
   methods: {
+
     // 请求影院列表数据
     getSeatList: function () {
       // mock数据
@@ -442,7 +444,7 @@ export default {
 
   .wapper
     width: 270px
-    width 640px
+    width 750px
     background #f3f4f6
     .seat-detail-item
       display flex

@@ -8,7 +8,7 @@
       @click="selectItem(item)"
     >
       <i class="iconfont icon-dui"/>
-      <span class="text">{{ item.name }}</span>
+      <span class="text" style="font-size: 33px" >{{ item.name }}</span>
     </div>
   </div>
 </template>
@@ -48,7 +48,7 @@ export default {
   .item
     position relative
     flex 1
-    line-height 40px
+    line-height 60px
     margin 0 30px
     color #333
     border-bottom 1px solid #e5e5e5

@@ -44,20 +44,18 @@
       </div>
     </div>
     <Confirm ref="confirm" content="是否删除所有搜索历史" @confirm="clearSearchHistory"/>
-    <van-tabbar v-model="active">
-      <van-tabbar-item name="home" icon="home-o" @click="$router.push('/')">电影</van-tabbar-item>
-      <van-tabbar-item name="user" icon="user-o" @click="$router.push('/user')">我的</van-tabbar-item>
-    </van-tabbar>
+    <Footer/>
   </div>
 </template>
 
 <script>
 import SearchBox from 'components/SearchBox'
 import { mapState, mapMutations } from 'vuex'
-
+import Footer from '../components/Footer'
 export default {
   components: {
-    SearchBox
+    SearchBox,
+    Footer
   },
   data () {
     return {
@@ -78,6 +76,7 @@ export default {
     this.$store.state.showNav = true
     this.getHotKeys()
   },
+
   methods: {
     getHotKeys () {
       this.$axios.get('/meetingFilm/film/list5HotSearch').then(res => {
@@ -149,7 +148,7 @@ export default {
     background-color #fff
     .title
       padding 15px 0
-      font-size 15px
+      font-size 35px
       color #666
     .list
       display flex
@@ -159,36 +158,38 @@ export default {
         padding 6px 12px
         margin: 0 12px 12px 0
         border-radius 4px
-        font-size 13px
-        color #333
-        background-color #f5f5f5
+        font-size 33px
+        color white
+        background-color #ff9000
   .history-wrap
     .title
       padding 15px 0
-      font-size 15px
+      font-size 35px
       color #666
       .icon-clear
         float right
-        font-size 15px
+        font-size 35px
     margin-top 10px
     padding 0 15px 8px 15px
     .item
-      height 40px
-      line-height 40px
+      height 90px
+      line-height 90px
       display flex
-      font-size 15px
+      font-size 35px
       color #333
       border-bottom 1px solid #e5e5e5
       .icon
-        font-size 15px
+        font-size 35px
         color #999
       .icon-history
+        font-size 35px
         margin-right 10px
       .text
+        font-size 37px
         flex 1
   .result-wrap
     position fixed
-    top 111px
+    top 201px
     bottom 0
     width 100%
     overflow scroll
@@ -201,8 +202,8 @@ export default {
       color #999
       text-align center
       .img
-        width 100px
-        height 100px
+        width 200px
+        height 200px
         filter grayscale(1)
         margin-bottom 15px
 </style>

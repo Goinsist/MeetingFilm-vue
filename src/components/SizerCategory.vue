@@ -73,8 +73,10 @@ export default {
     .item
       padding 6px 12px
       margin: 0 10px 10px 0
-      border-radius 5px
-      font-size 13px
+      border-radius 10px
+      text-align center
+      font-size 43px
+      height 50px
       color #777
       border 1px solid #ccc
       &.active

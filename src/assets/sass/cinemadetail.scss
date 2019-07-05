@@ -14,19 +14,19 @@
     background-color: #fff;
     .cinemaName {
         position: relative;
-        padding: 15px 100px 15px 15px;
+        padding: 5px 100px 15px 15px;
         .title{
-            font-size: 17px;
-            line-height: 24px;
+            font-size: 37px;
+            line-height: 74px;
             font-weight: 700;
             color: #333;
         }
         .addr {
             margin-top: 2px;
-            font-size: 13px;
-            line-height: 18.5px;
+            font-size: 23px;
+            line-height: 30.5px;
             color: #999;
-            width: 200px;
+            width: 700px;
         }
     }
     .post-bg {
@@ -62,12 +62,13 @@
                 z-index: 1;
             }
             .swiper-slide {
-                width: 65px;
-                height: 94px;
+                width: 200px;
+                height: 300px;
                 .active{
                     position: relative;
-                    width: 65px;
-                    height: 94px;
+
+                    width: 190px;
+                    height: 270px;
                     border: 2px solid #fff;
                     transform: scale(1.2);
                     -webkit-transform: scale(1.2);
@@ -87,8 +88,9 @@
                 }
             }
             img {
-                width: 65px;
-                height: 94px;
+
+                width: 190px;
+                height: 270px;
             }
         }
     }
@@ -97,15 +99,15 @@
         text-align: center;
         .movie-title {
             .title {
-                height: 24px;
-                line-height: 24px;
-                font-size: 17px;
+                height: 54px;
+                line-height: 54px;
+                font-size: 27px;
                 color: #333;
                 font-weight: 700;
             }
             .sc{
                 color: $color1;
-                font-size: 16px;
+                font-size: 36px;
                 .score {
                     color: $color1;
                     font-size: 10px;
@@ -114,9 +116,9 @@
         }
         .desc {
             margin-top: 2px;
-            height: 18.5px;
-            line-height: 18.5px;
-            font-size: 13px;
+            height: 38.5px;
+            line-height: 38.5px;
+            font-size: 23px;
             color: #999;
         }
     }
@@ -130,14 +132,14 @@
             }
             .showday {
                 display: inline-block;
-                line-height: 45px;
-                height: 45px;
+                line-height: 84px;
+                height: 84px;
                 text-align: center;
                 width: 33vw;
-                font-size: 14px;
+                font-size: 34px;
                 color: #666;
                 &.active {
-                    border-bottom: 2px solid $color_text;
+                    border-bottom: 5px solid $color_text;
                     color: $color_text;
                 }
             }
@@ -205,16 +207,16 @@
                         .time-block {
                             width: 20%;
                             .begin {
-                                font-size: 20px;
+                                font-size: 30px;
 
                                 color: #333;
-                                line-height: 1;
+                                line-height: 48px;
                                 white-space: nowrap;
                             }
                             .end {
                                 margin-top: 10px;
                                 color: #999;
-                                font-size: 11px;
+                                font-size: 21px;
                                 line-height: 1;
                                 white-space: nowrap;
                                 .tui {
@@ -230,19 +232,19 @@
                             margin-left: 17px;
                             -webkit-box-flex: 1;
                             -ms-flex: 1;
-                            flex: 0 0 110px;
+                            flex: 0 0 210px;
                             overflow-x: hidden;
                             .lan {
 
-                                margin-top: 2px;
-                                line-height: 18px;
-                                font-size: 13px;
+
+                                line-height: 48px;
+                                font-size: 32px;
                                 color: #333;
                                 white-space: normal;
                             }
                             .hall {
-                                margin-top: 10px;
-                                font-size: 11px;
+                                margin-top: 13px;
+                                font-size: 21px;
                                 color: #999;
                                 white-space: normal;
                             }
@@ -255,17 +257,17 @@
                         .price {
                             flex: 0 1 auto;
                             width: 130px;
-                            margin-left: 5px;
+                            margin-left: 55px;
                             .sellPr {
                                 display: inline-block;
                                 line-height: 1;
-                                margin-top: 1px;
+                                margin-top: 10px;
                                 color: #f03d37;
                                 .d {
-                                    font-size: 12px;
+                                    font-size: 32px;
                                 }
                                 .stonefont {
-                                    font-size: 19px;
+                                    font-size: 39px;
                                 }
                             }
                             .vipPrice {
@@ -305,22 +307,22 @@
                             }
                         }
                         .button-block {
-                            width: 85px;
+                            width: 145px;
                             margin-left: 2px;
                             position: relative;
                             button {
                                 position: absolute;
-                                top: 50%;
+                                top: 40%;
                                 margin-left: 4px;
                                 -webkit-transform: translateY(-50%);
                                 transform: translateY(-50%);
                                 width: 100%;
-                                height: 27px;
+                                height: 57px;
                                 line-height: 28px;
-                                font-size: 12px;
+                                font-size: 32px;
                                 background-color: #f03d37;
                                 color: #fff;
-                                border-radius: 4px;
+                                border-radius: 10px;
                                 text-align: center;
                             }
                         }

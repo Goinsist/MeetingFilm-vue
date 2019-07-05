@@ -3,7 +3,7 @@
     <Transition name="fade">
       <div class="login">
         <TheBackHeader>
-          <img src="~common/images/logo.png" width="70">
+          <img src="~common/images/logo.png" width="200">
         </TheBackHeader>
         <div class="wrapper">
           <section class="form-box">
@@ -176,7 +176,7 @@ export default {
   background-color #f6f6f6
   .wrapper
     position fixed
-    top 56px
+    top 86px
     width 100%
     background-color #f6f6f6
     .form-box
@@ -184,19 +184,19 @@ export default {
       .item
         position relative
         display flex
-        height 45px
-        line-height 45px
+        height 125px
+        line-height 125px
         .iconfont
           margin 0 5px 0 15px
-          font-size 25px
+          font-size 55px
           color #777
         input
           flex 1
           position relative
-
+          margin-left 40px
           outline none
           border none
-          font-size 18px
+          font-size 38px
           border-bottom 1px solid #eee
         .image
           position absolute
@@ -206,7 +206,7 @@ export default {
           width 18px
     .btn-wrapper
       margin 10px
-      height 40px
+      height 90px
       button
         width 100%
         height 100%

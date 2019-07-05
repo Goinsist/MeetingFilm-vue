@@ -19,12 +19,13 @@ export default {
   align-items center
   justify-content center
   width 100%
-  height 56px
+  height 86px
   color #fff
   background $theme-color
   text-align center
   .iconfont
     position absolute
     left 10px
-    font-size 25px
+
+    font-size 45px
 </style>

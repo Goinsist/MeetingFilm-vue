@@ -74,12 +74,12 @@ export default {
     transform translate(-50%, -50%)
     z-index 100
     .confirm-content
-      width 270px
+      width 570px
       border-radius 13px
       background rgba(255,255,255,0.9);
       .text
         padding 19px 15px
-        line-height 22px
+        line-height 192px
         text-align center
         color #333
       .operate
@@ -88,7 +88,7 @@ export default {
         text-align center
         .operate-btn
           flex 1
-          line-height 22px
+          line-height 92px
           padding 10px 0
           border-top 1px solid #999
           color #1e7dd7

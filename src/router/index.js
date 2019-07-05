@@ -99,7 +99,7 @@ const router = new Router({
 // 导航守卫
 // 使用 router.beforeEach 注册一个全局前置守卫，判断用户是否登陆
 router.beforeEach((to, from, next) => {
-  if (to.path === '/login' || to.path === '/recommend' || to.path === '/list' || to.path === '/' || to.path === '/category' || to.path === '/rank' || to.path === '/search' || to.path === '/error') {
+  if (to.path === '/login' || to.path.indexOf('/cinemadetail') !== -1 || to.path.indexOf('/movie') !== -1 || to.path === '/recommend' || to.path === '/list' || to.path === '/' || to.path === '/category' || to.path === '/rank' || to.path === '/search' || to.path === '/error') {
     next()
   } else {
     let token = localStorage.getItem('Authorization')

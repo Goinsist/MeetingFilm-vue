@@ -12,11 +12,12 @@ import VueAwesomeSwiper from 'vue-awesome-swiper' // 轮播
 
 import 'amfe-flexible'
 // require styles
+
 import 'swiper/dist/css/swiper.css'
 import vueAwesomeCountdown from 'vue-awesome-countdown'
 import { Card, Tag, Panel, Cell, CellGroup, SubmitBar, Dialog, Image, NavBar, NoticeBar, Icon } from 'vant'
 import 'vant/lib/index.css'
-
+import './assets/icon/index.css'
 Vue.use(Icon)
 
 Vue.use(NoticeBar)
