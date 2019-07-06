@@ -2,7 +2,7 @@
   <Transition name="fade">
     <div class="list">
       <TheBackHeader>
-        <span>{{ tabName }}</span>
+        <span style="font-size: 33px">{{ tabName }}</span>
       </TheBackHeader>
       <div class="content-wrapper">
         <ScrollView :data="movieList" :pull-up-load="true" @pulling-up="loadMore">
@@ -135,7 +135,7 @@ export default {
         background $theme-color
   .content-wrapper
     position absolute
-    top 56px
+    top 86px
     bottom 0
     width 100%
     .pull-up-wrap
