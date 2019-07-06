@@ -67,7 +67,7 @@
           <!--<span v-if="movie.promotion.cardPromotionTag" class="lijian textOverflow1">{{ movie.promotion.cardPromotionTag }}</span>-->
           <!--</div>-->
           <div class="showTimes" >
-            <span> 近期场次：{{ cinema.filmRound | format }}</span>
+            <span> 近期场次：{{ cinema.filmRound | formatRound }}</span>
           </div>
         </li>
       </ul>
@@ -85,9 +85,9 @@ export default {
     TheBackHeader
   },
   filters: {
-    format: function (value) {
+    formatRound: function (value) {
       if (value.indexOf(',') !== -1) {
-        let values = value.replace(',', ' | ')
+        let values = value.split(',').join(' | ')
         return values
       }
       return value
