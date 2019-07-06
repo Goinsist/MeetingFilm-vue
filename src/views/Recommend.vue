@@ -27,7 +27,7 @@
         @more="goMore(3)"
         @select="selectItem"
       />
-      <div style="height: 78px"/>
+      <div style="height: 88px"/>
     </ScrollView>
     <Footer/>
   </div>

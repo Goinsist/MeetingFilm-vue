@@ -9,7 +9,7 @@
 
         @select="gotoDetail"
       />
-      <div style="height: 70px"/>
+      <div style="height: 80px"/>
     </ScrollView>
     <div v-show="!movieList.length" class="loading-wrap">
       <Loading/>

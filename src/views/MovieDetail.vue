@@ -57,7 +57,7 @@
         >
           <div class="name">
             <h1 class="nm">{{ cinema.cinemaName }}</h1>
-            <p><span>{{ cinema.filmMinPrice }}</span>元起</p>
+            <p style="position: absolute;right: 20px;top: 20px"><span>{{ cinema.filmMinPrice }}</span>元起</p>
           </div>
           <div class="address clearfix">
             <p class="addr textOverflow1">{{ cinema.cinemaAddress }}</p>

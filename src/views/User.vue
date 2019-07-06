@@ -3,7 +3,7 @@
     <div v-if="user" class="user">
       <div class="userinfo-wrapper">
         <div class="avatar">
-          <img src="~common/images/user.png" width="32">
+          <img src="~common/images/user.png" width="92">
         </div>
         <div class="info">
           <span class="text">{{ user.email }}</span>
@@ -16,6 +16,7 @@
           <li class="menu-item" @click="listOrders">
             <van-icon
               name="orders-o"
+              style="font-size: 45px"
               :info="counts"
             />
             <span class="text" style="padding-left: 10px">我的订单</span>
@@ -24,6 +25,7 @@
           <li class="menu-item">
             <van-icon
               name="point-gift-o"
+              style="font-size: 45px"
             />
             <span class="text" style="padding-left: 10px">优惠券</span>
             <i class="iconfont icon-right"/>
@@ -31,6 +33,7 @@
           <li class="menu-item">
             <van-icon
               name="coupon-o"
+              style="font-size: 45px"
             />
             <span class="text" style="padding-left: 10px">折扣卡</span>
             <i class="iconfont icon-right"/>
@@ -114,55 +117,55 @@ export default {
       display flex
       align-items center
       justify-content center
-      width 67px
-      height 67px
+      width 87px
+      height 87px
       background #eee
       border-radius 50%
     .info
       display flex
       flex-direction column
       padding-left 10px
-      font-size 18px
+      font-size 38px
       color #fff
       .text
         flex 1
-        line-height 33px
+        line-height 53px
     .icon-left
       position absolute
-      top 10px
-      left 10px
-      font-size 25px
+      top 60px
+      left 20px
+      font-size 45px
       color #fff
   .menu-wrapper
     .menus
       padding-left 10px
       .menu-item
         padding 10px
-        font-size 18px
-        line-height 25px
+        font-size 48px
+        line-height 65px
         list-style none
         border-bottom 1px solid #d8d8d8
         color #333
         .iconfont
           vertical-align text-bottom
-          font-size 25px
+          font-size 85px
           color #999
           margin-right 8px
         .count
           float right
-          margin-right 5px
+          margin-right 15px
           color #999
-          font-size 15px
+          font-size 45px
         .icon-right
-          font-size 20px
+          font-size 40px
           float right
   .btn-wrapper
     padding 20px
     .logout-btn
       width 100%
-      height 48px
-      line-height 48px
-      font-size 18px
+      height 78px
+      line-height 78px
+      font-size 58px
       border none
       border-radius 48px
       color #fff

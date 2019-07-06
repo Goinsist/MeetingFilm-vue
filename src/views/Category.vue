@@ -45,7 +45,7 @@
         <div class="pull-up-wrap">
           <p v-show="pullUpLoading">正在加载...</p>
         </div>
-        <div style="height: 60px"/>
+        <div style="height: 70px"/>
       </ScrollView>
       <div v-show="!movies.length" class="no-result">
         <img src="~common/images/noresult.png" class="img">

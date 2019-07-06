@@ -34,7 +34,7 @@ export default {
 		align-items: center;
 		justify-content: center;
 		background: linear-gradient(to right, #6F50F5,#C26DFE);
-		height: 81px;
+		height: 91px;
 		width: 100%;
 		color: white;
 	}
