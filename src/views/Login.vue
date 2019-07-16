@@ -43,8 +43,24 @@
             <Transition name="err">
               <p v-show="errMsg" class="errmsg">{{ errMsg }}</p>
             </Transition>
-            <p v-if="isSignUp" class="register" @click="changeType">立即登录</p>
-            <p v-else class="register" @click="changeType">免费注册</p>
+            <p
+              v-if="isSignUp"
+              class="register"
+              style="font-size: 45px"
+              @click="changeType"
+            >
+              立即登录
+            </p>
+            <p
+              v-else
+              class="register"
+              style="font-size: 45px"
+              @click="changeType"
+            >
+              免费注册
+            </p>
+            <span style="font-size: 50px">测试账号:1234321@qq.com</span>
+            <span style="font-size: 50px">测试密码:911013</span>
           </div>
         </div>
       </div>

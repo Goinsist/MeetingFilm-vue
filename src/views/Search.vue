@@ -81,7 +81,7 @@ export default {
     getHotKeys () {
       this.$axios.get('/meetingFilm/film/list5HotSearch').then(res => {
         if (res.status === 0) {
-          console.log(res.data)
+          console.log('搜索词热度前5 :' + res.data)
           this.hotKeys = res.data
         }
       })

@@ -38,7 +38,7 @@ module.exports = {
     config.devServer.proxy({
       '/meetingFilm': {
         // 你后端的ip
-        target: 'your ip',
+        target: 'http://localhost',
         pathRewrite: { '^/meetingFilm': '' }
       }
     })

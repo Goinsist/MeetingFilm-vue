@@ -15,6 +15,7 @@ const MovieDetail = () => import('views/MovieDetail')
 const HallSeat = () => import('views/hallseat/HallSeat')
 const ConfirmOrder = () => import('views/ConfirmOrder')
 const MyOrder = () => import('views/MyOrder')
+const PaySuccess = () => import('views/PaySuccess')
 
 Vue.use(Router)
 
@@ -89,6 +90,11 @@ const router = new Router({
       component: List
     },
     {
+      path: '/paysuccess',
+      name: 'paysuccess',
+      component: PaySuccess
+    },
+    {
       path: '/error',
       name: 'error',
       component: ErrorPage
@@ -99,7 +105,7 @@ const router = new Router({
 // 导航守卫
 // 使用 router.beforeEach 注册一个全局前置守卫，判断用户是否登陆
 router.beforeEach((to, from, next) => {
-  if (to.path === '/login' || to.path.indexOf('/cinemadetail') !== -1 || to.path.indexOf('/movie') !== -1 || to.path === '/recommend' || to.path === '/list' || to.path === '/' || to.path === '/category' || to.path === '/rank' || to.path === '/search' || to.path === '/error') {
+  if (to.path === '/login' || to.path === '/paysuccess' || to.path.indexOf('/cinemadetail') !== -1 || to.path.indexOf('/movie') !== -1 || to.path === '/recommend' || to.path === '/list' || to.path === '/' || to.path === '/category' || to.path === '/rank' || to.path === '/search' || to.path === '/error') {
     next()
   } else {
     let token = localStorage.getItem('Authorization')

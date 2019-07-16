@@ -74,20 +74,20 @@
       <h3 style="margin-left: 25px;padding-top: 15px;color: #cccccc;font-size: 35px" >4.购票成功后,会收到取票短信码</h3>
       <h3 style="margin-left: 25px;padding-top: 15px;;color: #cccccc;font-size: 35px">5.下单即代表你同意《meetingFilm用户服务协议》</h3>
     </div>
-    <van-dialog
-      v-model="show"
-      style="width: 800px;height: 800px;font-size:50px "
-      title="扫描二维码付款"
-      show-confirm-button="false"
-      close-on-click-overlay="true"
-    >
-      <van-image
+    <!--<van-dialog-->
+    <!--v-model="show"-->
+    <!--style="width: 800px;height: 800px;font-size:50px "-->
+    <!--title="扫描二维码付款"-->
+    <!--show-confirm-button="false"-->
+    <!--close-on-click-overlay="true"-->
+    <!--&gt;-->
+    <!--<van-image-->
 
-        v-if="qrCode!==''"
-        style="position: absolute;top: 100px;right: 100px;width: 600px;height: 600px"
-        :src="qrCode"
-      />
-    </van-dialog>
+    <!--v-if="qrCode!==''"-->
+    <!--style="position: absolute;top: 100px;right: 100px;width: 600px;height: 600px"-->
+    <!--:src="qrCode"-->
+    <!--/>-->
+    <!--</van-dialog>-->
     <van-tabbar v-model="active" style="height: 200px" >
       <van-tabbar-item @click="onSubmit">
         <span style="font-size: 50px;color: black">确认支付</span>
@@ -166,9 +166,15 @@ export default {
 
       this.$axios.post('/meetingFilm/order/getPayInfo', qs.stringify({ 'orderId': this.orderId })
       ).then(res => {
-        console.log(res)
-        this.qrCode = res.data.qRCodeAddress
-        console.log(this.qrCode)
+        if (res.status === 0) {
+          console.log(res)
+          let form = res.msg
+          const div = document.createElement('pay')
+          div.innerHTML = form
+          document.body.appendChild(div)
+          document.forms[0].submit()
+          console.log(this.qrCode)
+        }
       })
     }
   }
